@@ -1,0 +1,70 @@
+#Abstraction
+from abc import ABC, abstractmethod
+
+class Details(ABC):
+    def problem(self):
+        pass
+
+class Truck(Details):
+    def problem(self):
+        print("your Truck is under warenty")
+class Car(Details):
+    def problem(self):
+        print("your Car is under warenty")
+
+class vehicle:
+    def __init__(self, Type):
+        self.Type = Type
+
+
+
+
+
+#Encapsulation:Here class is a Encapsulation
+    def Properties(self, NumOfWiper=None, NumOfWheels=None, NumOfLights=None, NumOfSensors=None):
+        self.NumOfWiper = NumOfWiper
+        self.NumOfWheels = NumOfWheels
+        self.NumOfLights = NumOfLights
+        self.NumOfSensors = NumOfSensors
+
+    def WarantyDetails(self):
+
+        if(self.Type == "Bike" or self.Type == "Car"):
+            print("your vehicle in under warenty the warenty parts are Engine,basic warenty parts")
+        elif(self.Type == "Bus" or self.Type == "Truck"):
+            print("The warenty will coverd by Only engine parts")
+
+
+    def DisplayAllDetails(self):
+        print("Type : ", self.Type, "NumOfWiper: ", self.NumOfWiper, "NumOfWheels : ", self.NumOfWheels, "NumOfLights : ",
+              self.NumOfLights, "NumOfSensors : ", self.NumOfSensors)
+# here inherited the class
+class Service(vehicle):
+
+    def Repair(self,Maintanance):
+        self.Maintanance = Maintanance
+
+#here using polymorphisam and Method overide will done
+
+    def WarantyDetails(self):
+        if(self.Type == "Bike" or self.Type == "Car"):
+            print("your vehicle is under service some parts are in under warenty")
+
+        else:
+
+            print("your  vehicle is under service some engine parts are demages no worry its under warenty")
+
+
+
+
+
+
+t = Truck()
+t.problem()
+
+product = Service("Truck")
+product.Properties(4, 12, 6, 1)
+
+
+product.WarantyDetails()
+product.DisplayAllDetails()
